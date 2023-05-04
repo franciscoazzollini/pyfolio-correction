@@ -239,7 +239,8 @@ def extract_round_trips(transactions, portfolio_value=None, live_start_date=None
                         # Push additional stock-prices onto stack
                         price_stack.append(price)
                         dt_stack.append(dt)
-
+                if not live_start_date:
+                    live_start_date='1960-01-01'    
                 lower = pd.Timestamp(f'{live_start_date} 00:00:00+0000', tz='UTC')
                 if cur_open_dts and  len(cur_open_dts) >0:
                   lower = lower if lower < cur_open_dts[0] else cur_open_dts[0]
